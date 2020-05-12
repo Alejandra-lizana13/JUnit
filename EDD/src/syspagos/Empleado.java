@@ -1,6 +1,6 @@
 package syspagos;
 
-import excepciones.CargoException;
+import excepciones.CargoException;   
 import excepciones.MesesTrabajoException;
 import excepciones.NombreEmpleadoException;
 import excepciones.NumeroEmpleadoException;
@@ -74,7 +74,7 @@ public class Empleado {
         if (mesesT.matches("^\\d+$")){
             n= Integer.parseInt(mesesT);
             if (n>=000 && n < 1000 ){
-                setNumeroEmpleado(n);
+            	setMesesTrabajo(n);
                 return;
             }
         }
@@ -85,9 +85,11 @@ public class Empleado {
         char[] caracter= directivo.toCharArray();
         if (directivo.length()==1){
             if (caracter[0] == '+' ){
-                setDirectivo(true);
+            	setDirectivo(true);
+            	return;
             }else if(caracter[0]=='-'){
-                setDirectivo(false);
+            	setDirectivo(false);
+            	return;
             }
         }
         throw new CargoException();
@@ -121,8 +123,8 @@ public class Empleado {
         return Directivo;
     }
 
-    private void setDirectivo(boolean directivo) {
-        Directivo = directivo;
+    private void setDirectivo(boolean Directivo) {
+        this.Directivo = Directivo;
     }
 
     public Prima getPrima() {
